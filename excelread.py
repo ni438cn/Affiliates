@@ -1,4 +1,8 @@
-path = "/Users/nboyer/OneDrive - University of North Carolina at Chapel Hill/Documents - UNC ITS RC Engage Support/Application Form to Request Registration as UNC-CH Affiliate 1.xlsx"
+#Need to change for each user
+path_to_onedrive = "/Users/nboyer/OneDrive - University of North Carolina at Chapel Hill"
+
+
+path = path_to_onedrive+"/Documents - UNC ITS RC Engage Support/Application Form to Request Registration as UNC-CH Affiliate 1.xlsx"
 
 from openpyxl import load_workbook
 
@@ -84,7 +88,8 @@ while str(sheet.cell(row=ind, column=1).value) != "None":
         page.merge_page(new_pdf.pages[0])
         output.add_page(page)
         # finally, write "output" to a real file
-        paths = "/Users/nboyer/OneDrive - University of North Carolina at Chapel Hill/Unsigned/"+re[6]+"_" + re[4]+"_"+str(datetime.today().strftime('%m_%d_%Y'))+"-affiliate-application_rc_sponsored.pdf"
+        paths = path_to_onedrive+"/Unsigned/"+re[6]+"_" + re[4]+"_"+str(datetime.today().strftime('%m_%d_%Y'))+"-affiliate-application_rc_sponsored.pdf"
+
         output_stream = open(paths, "wb")
         output.write(output_stream)
         output_stream.close()
